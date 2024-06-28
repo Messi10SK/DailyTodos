@@ -84,7 +84,12 @@ export default function App() {
             editTodo={editTodo}
           />
         ))}
+         <footer className="text-center mt-4 text-gray-500 text-sm">
+        &copy; {new Date().getFullYear()} Satyam Kanojiya. All rights reserved.
+      </footer>
       </div>
     </div>
+   
   </div>
+  
 )};
