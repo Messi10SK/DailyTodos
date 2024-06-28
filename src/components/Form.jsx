@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../redux/theme'; // Adjust path as necessary
 
 const Form = ({ addTodo }) => {
   const [input, setInput] = useState('');
+  const theme = useSelector(selectTheme);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,17 +15,17 @@ const Form = ({ addTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex justify-center mb-4">
+    <form onSubmit={handleSubmit} className={`flex justify-center mb-4 ${theme === 'light' ? 'bg-white' : 'bg-gray-900'} p-4 rounded-lg shadow-md`}>
       <input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Add a new todo"
-        className="w-3/4 p-2 border border-gray-300 rounded-md"
+        className={`w-full p-2 border border-gray-300 dark:text-black rounded-md focus:outline-none focus:border-blue-500 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}
       />
       <button
         type="submit"
-        className="ml-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        className={`ml-2 p-2 rounded-md ${theme === 'light' ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-500 text-white hover:bg-gray-600'}`}
       >
         Add
       </button>
